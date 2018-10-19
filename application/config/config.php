@@ -56,7 +56,7 @@ $allowed_hosts = array('www.npeht.com', 'npeht.com', 'api.npeht.com');
 if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_hosts)) 
 $config['base_url'] = 'http://localhost:8080/npeht_api/';
 else
-$config['base_url'] = 'http://api.npeht.com/api/';
+$config['base_url'] = 'http://api.npeht.com/';
 
 /*
 |--------------------------------------------------------------------------
