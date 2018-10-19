@@ -52,7 +52,7 @@ $config['UPLOAD_DIR'] = 'http://144.217.255.53/banners/';
 |
 */
 
-$allowed_hosts = array('www.npeht.com', 'npeht.com');
+$allowed_hosts = array('www.npeht.com', 'npeht.com', 'api.npeht.com');
 if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_hosts)) 
 $config['base_url'] = 'http://api.npeht.com/api/';
 else
