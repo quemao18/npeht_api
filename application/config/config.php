@@ -51,7 +51,9 @@ $config['UPLOAD_DIR'] = 'http://144.217.255.53/banners/';
 | a PHP script and you can easily do that on your own.
 |
 */
-if($_SERVER['HTTP_HOST']=='npeht.com')
+
+$allowed_hosts = array('www.npeht.com', 'npeht.com');
+if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_hosts)) 
 $config['base_url'] = 'http://api.npeht.com/api/';
 else
 $config['base_url'] = 'http://localhost:8080/npeht_api/';
