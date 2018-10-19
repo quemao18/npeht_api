@@ -43,7 +43,6 @@ class audios extends REST_Controller
     {
         $this->load->model("audios_model");
         $audios = $this->audios_model->audios();
-<<<<<<< HEAD
         if($audios){
             $this->response($audios, REST_Controller::HTTP_OK);
         }else{
@@ -51,12 +50,6 @@ class audios extends REST_Controller
                 "status" => FALSE,
                 "message" => "Nada encontrado..."
             ),REST_Controller::HTTP_NOT_FOUND);
-=======
-        if($users){
-            $this->response($audios, 200);
-        }else{
-            $this->response(NULL, 400);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         }
     }
 

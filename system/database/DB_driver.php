@@ -916,10 +916,7 @@ abstract class CI_DB_driver {
 
 		if ($this->_trans_begin())
 		{
-<<<<<<< HEAD
 			$this->_trans_status = TRUE;
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			$this->_trans_depth++;
 			return TRUE;
 		}
@@ -1048,11 +1045,7 @@ abstract class CI_DB_driver {
 	 */
 	public function is_write_type($sql)
 	{
-<<<<<<< HEAD
 		return (bool) preg_match('/^\s*"?(SET|INSERT|UPDATE|DELETE|REPLACE|CREATE|DROP|TRUNCATE|LOAD|COPY|ALTER|RENAME|GRANT|REVOKE|LOCK|UNLOCK|REINDEX|MERGE)\s/i', $sql);
-=======
-		return (bool) preg_match('/^\s*"?(SET|INSERT|UPDATE|DELETE|REPLACE|CREATE|DROP|TRUNCATE|LOAD|COPY|ALTER|RENAME|GRANT|REVOKE|LOCK|UNLOCK|REINDEX)\s/i', $sql);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// --------------------------------------------------------------------

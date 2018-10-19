@@ -95,10 +95,7 @@ if ( ! function_exists('singular'))
 			'/(s)tatuses$/'		=> '\1\2tatus',
 			'/(c)hildren$/'		=> '\1\2hild',
 			'/(n)ews$/'		=> '\1\2ews',
-<<<<<<< HEAD
 			'/(quiz)zes$/'		=> '\1',
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			'/([^us])s$/'		=> '\1'
 		);
 

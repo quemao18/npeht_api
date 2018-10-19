@@ -913,7 +913,6 @@ class CI_Email {
 	/**
 	 * Get Mail Protocol
 	 *
-<<<<<<< HEAD
 	 * @return	mixed
 	 */
 	protected function _get_protocol()
@@ -921,20 +920,6 @@ class CI_Email {
 		$this->protocol = strtolower($this->protocol);
 		in_array($this->protocol, $this->_protocols, TRUE) OR $this->protocol = 'mail';
 		return $this->protocol;
-=======
-	 * @param	bool
-	 * @return	mixed
-	 */
-	protected function _get_protocol($return = TRUE)
-	{
-		$this->protocol = strtolower($this->protocol);
-		in_array($this->protocol, $this->_protocols, TRUE) OR $this->protocol = 'mail';
-
-		if ($return === TRUE)
-		{
-			return $this->protocol;
-		}
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// --------------------------------------------------------------------
@@ -942,39 +927,21 @@ class CI_Email {
 	/**
 	 * Get Mail Encoding
 	 *
-<<<<<<< HEAD
 	 * @return	string
 	 */
 	protected function _get_encoding()
-=======
-	 * @param	bool
-	 * @return	string
-	 */
-	protected function _get_encoding($return = TRUE)
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	{
 		in_array($this->_encoding, $this->_bit_depths) OR $this->_encoding = '8bit';
 
 		foreach ($this->_base_charsets as $charset)
 		{
-<<<<<<< HEAD
 			if (strpos($this->charset, $charset) === 0)
-=======
-			if (strpos($charset, $this->charset) === 0)
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			{
 				$this->_encoding = '7bit';
 			}
 		}
 
-<<<<<<< HEAD
 		return $this->_encoding;
-=======
-		if ($return === TRUE)
-		{
-			return $this->_encoding;
-		}
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// --------------------------------------------------------------------
@@ -1853,7 +1820,6 @@ class CI_Email {
 	{
 		$this->_unwrap_specials();
 
-<<<<<<< HEAD
 		$protocol = $this->_get_protocol();
 		$method   = '_send_with_'.$protocol;
 		if ( ! $this->$method())
@@ -1863,16 +1829,6 @@ class CI_Email {
 		}
 
 		$this->_set_error_message('lang:email_sent', $protocol);
-=======
-		$method = '_send_with_'.$this->_get_protocol();
-		if ( ! $this->$method())
-		{
-			$this->_set_error_message('lang:email_send_failure_'.($this->_get_protocol() === 'mail' ? 'phpmail' : $this->_get_protocol()));
-			return FALSE;
-		}
-
-		$this->_set_error_message('lang:email_sent', $this->_get_protocol());
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 		return TRUE;
 	}
 

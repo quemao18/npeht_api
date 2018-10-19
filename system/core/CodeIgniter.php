@@ -55,11 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @var	string
  *
  */
-<<<<<<< HEAD
 	const CI_VERSION = '3.1.6';
-=======
-	const CI_VERSION = '3.1.4';
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 
 /*
  * ------------------------------------------------------
@@ -438,11 +434,7 @@ if ( ! is_php('5.4'))
 		 * ReflectionMethod::isConstructor() is the ONLY reliable check,
 		 * knowing which method will be executed as a constructor.
 		 */
-<<<<<<< HEAD
 		elseif ( ! is_callable(array($class, $method)))
-=======
-		elseif ( ! is_callable(array($class, $method)) && strcasecmp($class, $method) === 0)
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 		{
 			$reflection = new ReflectionMethod($class, $method);
 			if ( ! $reflection->isPublic() OR $reflection->isConstructor())

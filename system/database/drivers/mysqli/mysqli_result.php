@@ -112,15 +112,9 @@ class CI_DB_mysqli_result extends CI_DB_result {
 		{
 			$retval[$i]			= new stdClass();
 			$retval[$i]->name		= $field_data[$i]->name;
-<<<<<<< HEAD
 			$retval[$i]->type		= static::_get_field_type($field_data[$i]->type);
 			$retval[$i]->max_length		= $field_data[$i]->max_length;
 			$retval[$i]->primary_key	= (int) ($field_data[$i]->flags & MYSQLI_PRI_KEY_FLAG);
-=======
-			$retval[$i]->type		= $field_data[$i]->type;
-			$retval[$i]->max_length		= $field_data[$i]->max_length;
-			$retval[$i]->primary_key	= (int) ($field_data[$i]->flags & 2);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			$retval[$i]->default		= $field_data[$i]->def;
 		}
 
@@ -130,7 +124,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	// --------------------------------------------------------------------
 
 	/**
-<<<<<<< HEAD
 	 * Get field type
 	 *
 	 * Extracts field type info from the bitflags returned by
@@ -185,8 +178,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	// --------------------------------------------------------------------
 
 	/**
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	 * Free the result
 	 *
 	 * @return	void

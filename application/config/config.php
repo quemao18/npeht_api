@@ -51,8 +51,8 @@ $config['UPLOAD_DIR'] = 'http://144.217.255.53/banners/';
 | a PHP script and you can easily do that on your own.
 |
 */
-if($_SERVER['HTTP_HOST']=='www.npeht.com')
-$config['base_url'] = 'http://api.nepht/api/';
+if($_SERVER['HTTP_HOST']=='144.217.255.53')
+$config['base_url'] = 'http://144.217.255.53/npeht_api/';
 else
 $config['base_url'] = 'http://localhost:8080/npeht_api/';
 
@@ -190,10 +190,7 @@ $config['composer_autoload'] = FALSE;
 |
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
-<<<<<<< HEAD
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:@&_\-'; 
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 
 /*
 |--------------------------------------------------------------------------
@@ -258,11 +255,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-<<<<<<< HEAD
 $config['log_threshold'] = 4;
-=======
-$config['log_threshold'] = 0;
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 
 /*
 |--------------------------------------------------------------------------

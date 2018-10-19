@@ -488,11 +488,7 @@ abstract class CI_DB_forge {
 	 *
 	 * @param	string	$table		Table name
 	 * @param	bool	$if_exists	Whether to add an IF EXISTS condition
-<<<<<<< HEAD
 	 * @return	mixed	(Returns a platform-specific DROP table string, or TRUE to indicate there's nothing to do)
-=======
-	 * @return	string
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	 */
 	protected function _drop_table($table, $if_exists)
 	{
@@ -983,13 +979,8 @@ abstract class CI_DB_forge {
 	/**
 	 * Process indexes
 	 *
-<<<<<<< HEAD
 	 * @param	string	$table	Table name
 	 * @return	string[] list of SQL statements
-=======
-	 * @param	string	$table
-	 * @return	string
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	 */
 	protected function _process_indexes($table)
 	{

@@ -1403,21 +1403,11 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		// ORDER BY usage is often problematic here (most notably
 		// on Microsoft SQL Server) and ultimately unnecessary
 		// for selecting COUNT(*) ...
-<<<<<<< HEAD
 		$qb_orderby       = $this->qb_orderby;
 		$qb_cache_orderby = $this->qb_cache_orderby;
 		$this->qb_orderby = $this->qb_cache_orderby = NULL;
 
 		$result = ($this->qb_distinct === TRUE OR ! empty($this->qb_groupby) OR ! empty($this->qb_cache_groupby) OR $this->qb_limit OR $this->qb_offset)
-=======
-		if ( ! empty($this->qb_orderby))
-		{
-			$orderby = $this->qb_orderby;
-			$this->qb_orderby = NULL;
-		}
-
-		$result = ($this->qb_distinct === TRUE OR ! empty($this->qb_groupby) OR ! empty($this->qb_cache_groupby))
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			? $this->query($this->_count_string.$this->protect_identifiers('numrows')."\nFROM (\n".$this->_compile_select()."\n) CI_count_all_results")
 			: $this->query($this->_compile_select($this->_count_string.$this->protect_identifiers('numrows')));
 
@@ -1425,17 +1415,10 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		{
 			$this->_reset_select();
 		}
-<<<<<<< HEAD
 		else
 		{
 			$this->qb_orderby       = $qb_orderby;
 			$this->qb_cache_orderby = $qb_cache_orderby;
-=======
-		// If we've previously reset the qb_orderby values, get them back
-		elseif ( ! isset($this->qb_orderby))
-		{
-			$this->qb_orderby = $orderby;
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 		}
 
 		if ($result->num_rows() === 0)

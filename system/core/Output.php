@@ -586,7 +586,6 @@ class CI_Output {
 			return;
 		}
 
-<<<<<<< HEAD
 		if ( ! flock($fp, LOCK_EX))
 		{
 			log_message('error', 'Unable to secure a file lock for file at: '.$cache_path);
@@ -640,64 +639,6 @@ class CI_Output {
 
 		// Send HTTP cache-control headers to browser to match file cache settings.
 		$this->set_cache_header($_SERVER['REQUEST_TIME'], $expire);
-=======
-		if (flock($fp, LOCK_EX))
-		{
-			// If output compression is enabled, compress the cache
-			// itself, so that we don't have to do that each time
-			// we're serving it
-			if ($this->_compress_output === TRUE)
-			{
-				$output = gzencode($output);
-
-				if ($this->get_header('content-type') === NULL)
-				{
-					$this->set_content_type($this->mime_type);
-				}
-			}
-
-			$expire = time() + ($this->cache_expiration * 60);
-
-			// Put together our serialized info.
-			$cache_info = serialize(array(
-				'expire'	=> $expire,
-				'headers'	=> $this->headers
-			));
-
-			$output = $cache_info.'ENDCI--->'.$output;
-
-			for ($written = 0, $length = self::strlen($output); $written < $length; $written += $result)
-			{
-				if (($result = fwrite($fp, self::substr($output, $written))) === FALSE)
-				{
-					break;
-				}
-			}
-
-			flock($fp, LOCK_UN);
-		}
-		else
-		{
-			log_message('error', 'Unable to secure a file lock for file at: '.$cache_path);
-			return;
-		}
-
-		fclose($fp);
-
-		if (is_int($result))
-		{
-			chmod($cache_path, 0640);
-			log_message('debug', 'Cache file written: '.$cache_path);
-
-			// Send HTTP cache-control headers to browser to match file cache settings.
-			$this->set_cache_header($_SERVER['REQUEST_TIME'], $expire);
-		}
-		else
-		{
-			@unlink($cache_path);
-			log_message('error', 'Unable to write the complete cache content at: '.$cache_path);
-		}
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// --------------------------------------------------------------------
@@ -764,17 +705,9 @@ class CI_Output {
 			log_message('debug', 'Cache file has expired. File deleted.');
 			return FALSE;
 		}
-<<<<<<< HEAD
 
 		// Send the HTTP cache control headers
 		$this->set_cache_header($last_modified, $expire);
-=======
-		else
-		{
-			// Or else send the HTTP cache control headers.
-			$this->set_cache_header($last_modified, $expire);
-		}
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 
 		// Add headers from cache file.
 		foreach ($cache_info['headers'] as $header)
@@ -860,21 +793,11 @@ class CI_Output {
 			$this->set_status_header(304);
 			exit;
 		}
-<<<<<<< HEAD
 
 		header('Pragma: public');
 		header('Cache-Control: max-age='.$max_age.', public');
 		header('Expires: '.gmdate('D, d M Y H:i:s', $expiration).' GMT');
 		header('Last-modified: '.gmdate('D, d M Y H:i:s', $last_modified).' GMT');
-=======
-		else
-		{
-			header('Pragma: public');
-			header('Cache-Control: max-age='.$max_age.', public');
-			header('Expires: '.gmdate('D, d M Y H:i:s', $expiration).' GMT');
-			header('Last-modified: '.gmdate('D, d M Y H:i:s', $last_modified).' GMT');
-		}
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// --------------------------------------------------------------------

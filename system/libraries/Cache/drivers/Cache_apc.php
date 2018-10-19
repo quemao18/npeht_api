@@ -80,18 +80,7 @@ class CI_Cache_apc extends CI_Driver {
 		$success = FALSE;
 		$data = apc_fetch($id, $success);
 
-<<<<<<< HEAD
 		return ($success === TRUE) ? $data : FALSE;
-=======
-		if ($success === TRUE)
-		{
-			return is_array($data)
-				? unserialize($data[0])
-				: $data;
-		}
-
-		return FALSE;
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// ------------------------------------------------------------------------
@@ -102,26 +91,12 @@ class CI_Cache_apc extends CI_Driver {
 	 * @param	string	$id	Cache ID
 	 * @param	mixed	$data	Data to store
 	 * @param	int	$ttl	Length of time (in seconds) to cache the data
-<<<<<<< HEAD
 	 * @param	bool	$raw	Whether to store the raw value (unused)
-=======
-	 * @param	bool	$raw	Whether to store the raw value
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	 * @return	bool	TRUE on success, FALSE on failure
 	 */
 	public function save($id, $data, $ttl = 60, $raw = FALSE)
 	{
-<<<<<<< HEAD
 		return apc_store($id, $data, (int) $ttl);
-=======
-		$ttl = (int) $ttl;
-
-		return apc_store(
-			$id,
-			($raw === TRUE ? $data : array(serialize($data), time(), $ttl)),
-			$ttl
-		);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// ------------------------------------------------------------------------
@@ -200,20 +175,12 @@ class CI_Cache_apc extends CI_Driver {
 	 */
 	public function get_metadata($id)
 	{
-<<<<<<< HEAD
 		$cache_info = apc_cache_info('user', FALSE);
 		if (empty($cache_info) OR empty($cache_info['cache_list']))
-=======
-		$success = FALSE;
-		$stored = apc_fetch($id, $success);
-
-		if ($success === FALSE OR count($stored) !== 3)
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 		{
 			return FALSE;
 		}
 
-<<<<<<< HEAD
 		foreach ($cache_info['cache_list'] as &$entry)
 		{
 			if ($entry['info'] !== $id)
@@ -232,15 +199,6 @@ class CI_Cache_apc extends CI_Driver {
 		}
 
 		return FALSE;
-=======
-		list($data, $time, $ttl) = $stored;
-
-		return array(
-			'expire'	=> $time + $ttl,
-			'mtime'		=> $time,
-			'data'		=> unserialize($data)
-		);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	}
 
 	// ------------------------------------------------------------------------

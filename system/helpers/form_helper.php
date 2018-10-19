@@ -597,11 +597,7 @@ if ( ! function_exists('form_label'))
 	 *
 	 * @param	string	The text to appear onscreen
 	 * @param	string	The id the label applies to
-<<<<<<< HEAD
 	 * @param	mixed	Additional attributes
-=======
-	 * @param	array	Additional attributes
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	 * @return	string
 	 */
 	function form_label($label_text = '', $id = '', $attributes = array())
@@ -614,17 +610,7 @@ if ( ! function_exists('form_label'))
 			$label .= ' for="'.$id.'"';
 		}
 
-<<<<<<< HEAD
 		$label .= _attributes_to_string($attributes);
-=======
-		if (is_array($attributes) && count($attributes) > 0)
-		{
-			foreach ($attributes as $key => $val)
-			{
-				$label .= ' '.$key.'="'.$val.'"';
-			}
-		}
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 
 		return $label.'>'.$label_text.'</label>';
 	}

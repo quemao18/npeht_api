@@ -310,11 +310,7 @@ class CI_Session_memcached_driver extends CI_Session_driver implements SessionHa
 			if ( ! $this->_memcached->replace($this->_lock_key, time(), 300))
 			{
 				return ($this->_memcached->getResultCode() === Memcached::RES_NOTFOUND)
-<<<<<<< HEAD
 					? $this->_memcached->add($this->_lock_key, time(), 300)
-=======
-					? $this->_memcached->set($this->_lock_key, time(), 300)
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 					: FALSE;
 			}
 		}
@@ -330,12 +326,8 @@ class CI_Session_memcached_driver extends CI_Session_driver implements SessionHa
 				continue;
 			}
 
-<<<<<<< HEAD
 			$method = ($this->_memcached->getResultCode() === Memcached::RES_NOTFOUND) ? 'add' : 'set';
 			if ( ! $this->_memcached->$method($lock_key, time(), 300))
-=======
-			if ( ! $this->_memcached->set($lock_key, time(), 300))
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			{
 				log_message('error', 'Session: Error while trying to obtain lock for '.$this->_key_prefix.$session_id);
 				return FALSE;

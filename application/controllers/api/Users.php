@@ -14,23 +14,15 @@ class users extends REST_Controller
         'new_user_post' => array('level' => 0),//crea un usuario nuevo
         'new_user_app_post' => array('level' => 0), //crea un usuario de app nuevo 
         'user_ita_get' => array('level' => 0), //devuelve el usuario por ITA
-<<<<<<< HEAD
         'forget_post' => array('level' => 0), // para restableser el password colocando uno temp y enviandolo por email
         'forget_2_post' => array('level' => 0), // para restableser el password verificando pregunta, ita y respuesta
         'users_positions_get' => array('level' => 0), //devuelve posiciones 
         'users_questions_get' => array('level' => 0), //devuelve las preguntas de la tabla question
         'users_rols_get' => array('level' => 0), //devuelve los roles de la tabla rols
-=======
-        'forget_post' => array('level' => 0), // para restableser el password
-        'positions_get' => array('level' => 0), //devuelve posiciones 
-        'questions_get' => array('level' => 0), //devuelve las preguntas de la tabla question
-        'rols_get' => array('level' => 0), //devuelve los roles de la tabla rols
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         'user_status_get' => array('level' => 0), //deveuelve el estado de del usuario 0 inactivo, 1 activo
         'update_status_post' => array('level' => 0), //cambia el estado del usuario
         'update_user_post' => array('level' => 0), //actualiza usuario backend
         'update_user_app_post' => array('level' => 0),//actualiza usuario app
-<<<<<<< HEAD
         'update_user_app_back_post' => array('level' => 0),//actualiza usuario app por el backend
         'change_password_post' => array('level' => 0), //cambia el password del usuario
         'delete_user_post' => array('level' => 0), //elimina usuario
@@ -51,10 +43,6 @@ class users extends REST_Controller
         ), REST_Controller::HTTP_NOT_FOUND);
         }
     }
-=======
-        'change_password_post' => array('level' => 0), //cambia el password del usuario
-    );
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
    
     //obtener user por id
     //users/user_id/id/id_user/X-API-KEY/miapikey
@@ -101,10 +89,7 @@ class users extends REST_Controller
     //$username = $this->get('username');
     $this->load->model("users_model");
     $user = json_decode($this->post("user"));
-<<<<<<< HEAD
     //var_dump($user);
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
     //$password = $this->get("password");
     //$clave = rand(123456, 999999);
    
@@ -113,25 +98,15 @@ class users extends REST_Controller
     $user2 = $this->users_model->user_ita($user->ita);
     //$this->set_response(array('message' => 'user'.$username), REST_Controller::HTTP_NOT_FOUND);
     
-<<<<<<< HEAD
     if (($temp)){
-=======
-    if (!empty($temp)){
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         //enviar email
         //$this->send_email_pass_temp($user, $pass);
 
         $this->response(array(
                 'status' => TRUE,
-<<<<<<< HEAD
                 'message' => 'Password cambiado...'
                 //'password_new' => $user->password, 
                 //'user' => $user2
-=======
-                'message' => 'Password cambiado...',
-                'password_new' => $user->password, 
-                'user' => $user2
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         ), REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code			
     }else{				
     $this->response(array(
@@ -145,7 +120,6 @@ class users extends REST_Controller
     //users/users/X-API-KEY/miapikey
     public function users_get()
     {
-<<<<<<< HEAD
         $q = urldecode($this->get("q"));
         $limit = $this->get("limit") !='' ? $this->get("limit") : $this->config->item('LIMIT');
         $start = $this->get("start") !='' ? (int) $this->get("start") : 0;
@@ -160,20 +134,11 @@ class users extends REST_Controller
                 'status' => FALSE,
                 'message' => 'Nada encontrado'
         ), REST_Controller::HTTP_NOT_FOUND);
-=======
-        $this->load->model("users_model");
-        $users = $this->users_model->users();
-        if($users){
-            $this->response($users, 200);
-        }else{
-            $this->response(NULL, 400);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         }
     }
 
     public function users_backend_get()
     {
-<<<<<<< HEAD
         $q = urldecode($this->get("q"));
         $limit = $this->get("limit") !='' ? $this->get("limit") : $this->config->item('LIMIT');
         $start = $this->get("start") !='' ? (int) $this->get("start") : 0;
@@ -187,20 +152,11 @@ class users extends REST_Controller
                 'status' => FALSE,
                 'message' => 'Nada encontrado'
         ), REST_Controller::HTTP_NOT_FOUND);
-=======
-        $this->load->model("users_model");
-        $users = $this->users_model->users_backend();
-        if($users){
-            $this->response($users, 200);
-        }else{
-            $this->response(NULL, 400);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         }
     }
 
      public function users_app_get()
     {
-<<<<<<< HEAD
         $q = urldecode($this->get("q"));
         $limit = $this->get("limit") !='' ? $this->get("limit") : $this->config->item('LIMIT');
         $start = $this->get("start") !='' ? (int) $this->get("start") : 0;
@@ -218,18 +174,6 @@ class users extends REST_Controller
     }
 
     //actual en uso
-=======
-        $this->load->model("users_model");
-        $users = $this->users_model->users_app();
-        if($users){
-            $this->response($users, 200);
-        }else{
-            $this->response(NULL, 400);
-        }
-    }
-
-
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
     public function forget_2_post() {
     //$this->response( $this->project_model->get_all ());
     //$username = $this->get('username');
@@ -488,11 +432,7 @@ class users extends REST_Controller
             }else{
                 $this->response(array(
 						'status' => TRUE,
-<<<<<<< HEAD
 						'message' => 'Proceso exitoso, espere autorización'
-=======
-						'message' => 'Usuario creado'
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 				), REST_Controller::HTTP_OK);
             }
         }
@@ -518,7 +458,6 @@ class users extends REST_Controller
         }
     }
 
-<<<<<<< HEAD
     public function delete_user_post()
     {   
 
@@ -540,8 +479,6 @@ class users extends REST_Controller
     }
 
 
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         public function update_user_app_post()
     {
         $this->load->model("users_model");
@@ -555,7 +492,6 @@ class users extends REST_Controller
         }else{
             $this->response(array(
                 'status' => TRUE, 
-<<<<<<< HEAD
                 "message" => "Proceso exitoso"
             ), REST_Controller::HTTP_OK);
         }
@@ -575,9 +511,6 @@ class users extends REST_Controller
             $this->response(array(
                 'status' => TRUE, 
                 "message" => "Proceso exitoso"
-=======
-                "message" => "Usuario actualizado"
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             ), REST_Controller::HTTP_OK);
         }
     }
@@ -594,7 +527,6 @@ class users extends REST_Controller
         }
     }
 
-<<<<<<< HEAD
     public function upload_avatar_post()
     {
     $uploaddir = 'd:/img/';
@@ -617,6 +549,4 @@ class users extends REST_Controller
      
     }
 
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 }

@@ -478,11 +478,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 			$sql = trim(substr($sql, 0, strrpos($sql, $orderby)));
 
 			// Get the fields to select from our subquery, so that we can avoid CI_rownum appearing in the actual results
-<<<<<<< HEAD
 			if (count($this->qb_select) === 0 OR strpos(implode(',', $this->qb_select), '*') !== FALSE)
-=======
-			if (count($this->qb_select) === 0)
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			{
 				$select = '*'; // Inevitable
 			}

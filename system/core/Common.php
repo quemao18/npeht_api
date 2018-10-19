@@ -135,11 +135,7 @@ if ( ! function_exists('load_class'))
 	 *
 	 * @param	string	the class name being requested
 	 * @param	string	the directory where the class should be found
-<<<<<<< HEAD
 	 * @param	mixed	an optional argument to pass to the class constructor
-=======
-	 * @param	string	an optional argument to pass to the class constructor
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	 * @return	object
 	 */
 	function &load_class($class, $directory = 'libraries', $param = NULL)

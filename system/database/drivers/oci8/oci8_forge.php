@@ -124,11 +124,7 @@ class CI_DB_oci8_forge extends CI_DB_forge {
 				if ($alter_type === 'MODIFY' && ! empty($field[$i]['new_name']))
 				{
 					$sqls[] = $sql.' RENAME COLUMN '.$this->db->escape_identifiers($field[$i]['name'])
-<<<<<<< HEAD
 						.' TO '.$this->db->escape_identifiers($field[$i]['new_name']);
-=======
-						.' '.$this->db->escape_identifiers($field[$i]['new_name']);
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 				}
 
 				$field[$i] = "\n\t".$field[$i]['_literal'];

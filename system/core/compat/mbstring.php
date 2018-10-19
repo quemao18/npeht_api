@@ -68,11 +68,7 @@ if ( ! function_exists('mb_strlen'))
 	 * @link	http://php.net/mb_strlen
 	 * @param	string	$str
 	 * @param	string	$encoding
-<<<<<<< HEAD
 	 * @return	int
-=======
-	 * @return	string
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 	 */
 	function mb_strlen($str, $encoding = NULL)
 	{

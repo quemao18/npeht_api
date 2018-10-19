@@ -2,7 +2,6 @@
 
 class Users_model extends CI_Model
 {
-<<<<<<< HEAD
 
     public function statistics(){
         $this->db->select("*,
@@ -15,8 +14,6 @@ class Users_model extends CI_Model
         }
     }
 
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
     public function user_id($id_user){
         $this->db->select("*");
         //$this->db->join('bancos', 'bancos.id_user=users.id_user');
@@ -27,7 +24,6 @@ class Users_model extends CI_Model
     }
 
     public function user($user){
-<<<<<<< HEAD
         //$this->db->select("*");
         $this->db->select('
         users.id_user,
@@ -58,17 +54,11 @@ class Users_model extends CI_Model
         $this->db->join('users as platinum', 'platinum.ita = users.ita_platinum', 'left');
         //$this->db->join('bancos', 'bancos.id_user=users.id_user');
         $query = $this->db->get_where("users", array("users.ita" => $user->ita, "users.password"=>md5($user->password)));
-=======
-        $this->db->select("*");
-        //$this->db->join('bancos', 'bancos.id_user=users.id_user');
-        $query = $this->db->get_where("users", array("users.ita" => $user->username, "users.password"=>md5($user->password)));
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         if($query->num_rows() == 1){
             return $query->row();
         }
     }
 
-<<<<<<< HEAD
     public function delete_user($user){
         if($this->db->delete('users', array('ita' => $user->ita)))
             return true;
@@ -76,19 +66,13 @@ class Users_model extends CI_Model
             return false;
     }
 
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
     public function users_rols()
     {
         //$this->db->select('rols.id_rol, users.id_user, users.name');
         //$this->db->join('rols', 'rols.id_rol=users.id_user');
-<<<<<<< HEAD
         $this->db->select('*, 
         (SELECT count(*) from users where users.id_rol = rols.id_rol) as total_users
         ');
-=======
-        $this->db->select('*');
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         $query = $this->db->get("rols");
        if($query->num_rows() > 0){
             return $query->result();
@@ -108,13 +92,9 @@ class Users_model extends CI_Model
     {
         //$this->db->select('rols.id_rol, users.id_user, users.name');
         //$this->db->join('rols', 'rols.id_rol=users.id_user');
-<<<<<<< HEAD
         $this->db->select('*,
         (SELECT count(*) from users where users.id_position = positions.id_position) as total_users
         ');
-=======
-        $this->db->select('*');
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         $query = $this->db->get("positions");
        if($query->num_rows() > 0){
             return $query->result();
@@ -142,7 +122,6 @@ class Users_model extends CI_Model
 
     public function new_user($user){
    //$this->db->select("*");
-<<<<<<< HEAD
     if(empty($user->address)) $user->address = '';
     if(empty($user->email)) $user->email = '';
     if(empty($user->name)) $user->name = '';
@@ -153,8 +132,6 @@ class Users_model extends CI_Model
     if(empty($user->id_position)) $user->id_position = 5;
 
     
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
      $data = array(
             //"id_user" => $user->id_user,
             "name" => $user->name,
@@ -164,11 +141,7 @@ class Users_model extends CI_Model
             "id_position" => $user->id_position,
             "address" => $user->address,
             "phone" => $user->phone,
-<<<<<<< HEAD
             "status" => $user->status, //activo
-=======
-            "status" => 1, //activo
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             "email" => $user->email,
             "password" => md5($user->password), 
             "date_create" => date('Y-m-d H:i:s')
@@ -187,7 +160,6 @@ class Users_model extends CI_Model
 
     public function new_user_app($user, $sponsor, $platinum){
    //$this->db->select("*");
-<<<<<<< HEAD
     if(empty($user->address)) $user->address = '';
     if(empty($user->email)) $user->email = '';
     if(empty($user->id_question)) $user->id_question = '';
@@ -201,8 +173,6 @@ class Users_model extends CI_Model
     if(empty($sponsor->ita)) $sponsor->ita = '';
     if(empty($platinum->ita)) $platinum->ita = '';
 
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
      $data = array(
             //"id_user" => $user->id_user,
             "name" => $user->name,
@@ -214,13 +184,9 @@ class Users_model extends CI_Model
             "id_position" =>  $user->id_position,
             "address" => $user->address,
             "phone" => $user->phone,
-<<<<<<< HEAD
             "status" => $user->status, 
             "id_question" => $user->id_question, 
             "answer"=> $user->answer,
-=======
-            "status" => 0, //inactivo
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             "email" => $user->email,
             "password" => md5($user->password), 
             "date_create" => date('Y-m-d H:i:s')
@@ -238,7 +204,6 @@ class Users_model extends CI_Model
     }
 
    public function update_user_app($user, $sponsor, $platinum){
-<<<<<<< HEAD
     if(empty($user->address)) $user->address = '';
     if(empty($user->email)) $user->email = '';
     if(empty($user->id_question)) $user->id_question = '';
@@ -255,9 +220,6 @@ class Users_model extends CI_Model
 
     //if(empty(($user->id_rol) || empty($user->id_position) || empty($user->status))) // caso app
     if(empty($user->password))
-=======
-        if(empty($user->password))
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         $data = array(
             //"id_user" => $user->id_user,
             "name" => $user->name,
@@ -265,41 +227,26 @@ class Users_model extends CI_Model
             "ita" => $user->ita,
             "ita_sponsor" => $sponsor->ita,
             "ita_platinum" => $platinum->ita,
-<<<<<<< HEAD
             //"id_rol" => $user->id_rol,
             //"id_position" => $user->id_position,
             //"status" => $user->status,
-=======
-            "id_rol" => $user->id_rol,
-            "id_position" => $user->id_position,
-            //"status" => 1, //activo
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             "email" => $user->email,
             "phone" => $user->phone,
             "address" => $user->address,
             "id_question" => $user->id_question,
             "answer" => $user->answer,
-<<<<<<< HEAD
             "photo" => $user->avatar_url,
             //"password" => md5($user->password), 
             "date_update" => date('Y-m-d H:i:s')
         );
         else        
             $data = array(
-=======
-            //"password" => md5($user->password), 
-            "date_update" => date('Y-m-d H:i:s')
-        );
-        else
-        $data = array(
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             //"id_user" => $user->id_user,
             "name" => $user->name,
             "last" => $user->last,
             "ita" => $user->ita,
             "ita_sponsor" => $sponsor->ita,
             "ita_platinum" => $platinum->ita,
-<<<<<<< HEAD
             //"id_rol" => $user->id_rol,
             //"id_position" => $user->id_position,
             //"status" => $user->status,
@@ -310,27 +257,12 @@ class Users_model extends CI_Model
             "answer" => $user->answer,
             "photo" => $user->avatar_url,
             "password" => md5($user->password), 
-=======
-            "id_rol" => $user->id_rol,
-            "id_position" => $user->id_position,
-            //"status" => 1, //activo
-            "email" => $user->email,
-            "phone" => $user->phone,
-            "address" => $user->address,
-            "password" => md5($user->password), 
-            "id_question" => $user->id_question,
-            "answer" => $user->answer,
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             "date_update" => date('Y-m-d H:i:s')
         );
         //$query = $this->db->update('users', $data, array('id_user' => $user->id_user));
         //$query = $this->db->where('email', $user->email)->get('users');
 
-<<<<<<< HEAD
         if(!$this->check_email($user->email, $user->ita) && !$this->check_email($user->email, $user->ita)){
-=======
-        if($this->check_email($user->email, $user->ita)){
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             return false;
         }else{
             if($this->db->update('users', $data, array('ita' => $user->ita)))
@@ -341,7 +273,6 @@ class Users_model extends CI_Model
        
     }
 
-<<<<<<< HEAD
 
     public function update_user_app_back($user, $sponsor, $platinum){
         if(empty($user->address)) $user->address = '';
@@ -412,8 +343,6 @@ class Users_model extends CI_Model
            
         }
 
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
     public function update_user($user){
         if(empty($user->password))
         $data = array(
@@ -448,21 +377,14 @@ class Users_model extends CI_Model
         //$query = $this->db->update('users', $data, array('id_user' => $user->id_user));
         //$query = $this->db->where('email', $user->email)->get('users');
 
-<<<<<<< HEAD
         if(!$this->check_email($user->email, $user->ita) && !$this->check_email($user->email, $user->ita)){
-=======
-        if($this->check_email($user->email, $user->ita)){
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
             return false;
         }else{
             if($this->db->update('users', $data, array('ita' => $user->ita)))
             return true;
             else
             return false;
-<<<<<<< HEAD
            
-=======
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         }
        
     }
@@ -470,7 +392,6 @@ class Users_model extends CI_Model
     public function check_email($email, $ita)
 	{
 			$id = $this->db->query(
-<<<<<<< HEAD
 					"select email from users where email = '$email' and email != '' and ita != '$ita'"
 			);
 
@@ -489,12 +410,6 @@ class Users_model extends CI_Model
 			);
 
 		if($id->num_rows() == 1)
-=======
-					"select email from users where email = '$email' "
-			);
-
-		if($id->num_rows()>1)
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
 			return true;
 		else
 			return false;
@@ -526,11 +441,7 @@ class Users_model extends CI_Model
             "status" => 1, //activo
             "date_update" => date('Y-m-d H:i:s')
         );
-<<<<<<< HEAD
         $query = $this->db->update('users', $data, array('ita' => $user->ita));
-=======
-        $query = $this->db->update('users', $data, array('id_user' => $user->id_user));
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         if($query){
             return true;
         }else{
@@ -539,7 +450,6 @@ class Users_model extends CI_Model
        
     }
 
-<<<<<<< HEAD
     public function users($q, $limit, $start, $id_rol)
     {
         
@@ -586,20 +496,12 @@ class Users_model extends CI_Model
         //$this->db->limit(1000, 0);
         $this->db->group_by('users.ita');
         $this->db->order_by('users.date_create DESC');
-=======
-    public function users()
-    {
-        $this->db->select('users.*, rols.*, positions.*');
-        $this->db->join('rols', 'rols.id_rol=users.id_rol');
-        $this->db->join('positions', 'positions.id_position=users.id_position');
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         $query = $this->db->get("users");
        if($query->num_rows() > 0){
             return $query->result();
         }
     }
 
-<<<<<<< HEAD
     public function users_backend($q, $limit, $start)
     {
         if(!empty($start) || !empty($limit) || !is_null($start) || !is_null($limit))
@@ -642,21 +544,12 @@ class Users_model extends CI_Model
         //$query = $this->db->get("users");
         $this->db->group_by('users.ita');
         $this->db->order_by('users.date_create DESC');
-=======
-    public function users_backend()
-    {
-        $this->db->select('users.*, rols.*, positions.*');
-        $this->db->join('rols', 'rols.id_rol=users.id_rol');
-        $this->db->join('positions', 'positions.id_position=users.id_position');
-        //$query = $this->db->get("users");
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         $query = $this->db->get_where("users", "users.id_rol<'4'");
        if($query->num_rows() > 0){
             return $query->result();
         }
     }
 
-<<<<<<< HEAD
     public function users_app($q, $limit, $start)
     {
         if(!empty($start) || !empty($limit) || !is_null($start) || !is_null($limit))
@@ -699,15 +592,6 @@ class Users_model extends CI_Model
         //$query = $this->db->get("users");
         $this->db->group_by('users.ita');
         $this->db->order_by('users.date_create DESC');
-=======
-    public function users_app()
-    {
-        $this->db->select('users.*, rols.*, positions.*');
-        //$this->db->join('users as user_master', 'users_master.ita=users.ita_master');
-        $this->db->join('rols', 'rols.id_rol=users.id_rol');
-        $this->db->join('positions', 'positions.id_position=users.id_position');
-        //$query = $this->db->get("users");
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         $query = $this->db->get_where("users", "users.id_rol = '4'");
        if($query->num_rows() > 0){
             return $query->result();
@@ -715,16 +599,10 @@ class Users_model extends CI_Model
     }
     public function user_ita($ita)
     {
-<<<<<<< HEAD
         $this->db->select('users.*');
         $this->db->join('rols', 'rols.id_rol=users.id_rol');
         $this->db->join('positions', 'positions.id_position=users.id_position');
         $this->db->limit(1);
-=======
-        $this->db->select('users.*, rols.*, positions.*');
-        $this->db->join('rols', 'rols.id_rol=users.id_rol');
-        $this->db->join('positions', 'positions.id_position=users.id_position');
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
         //print_r($ita);
         //$query = $this->db->get("users");
         $query = $this->db->get_where("users", "users.ita='$ita'");
@@ -737,11 +615,7 @@ class Users_model extends CI_Model
     {
     	$this->db->query(
     			"update users set last_login = now() " .
-<<<<<<< HEAD
     			"where users.ita = '$user->ita'  "
-=======
-    			"where users.ita = '$user->username'  "
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
     	);
     }
 
@@ -756,11 +630,7 @@ class Users_model extends CI_Model
     	
     	$afftectedRows = $this->db->affected_rows();
 		
-<<<<<<< HEAD
 		return $id;
-=======
-		return $afftectedRows;
->>>>>>> f26e49a7e79576c095da5bd22f4db240a99f70a1
     }
 
      public function set_password_temp($user, $pass)
