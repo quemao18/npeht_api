@@ -432,7 +432,7 @@ class users extends REST_Controller
             }else{
                 $this->response(array(
 						'status' => TRUE,
-						'message' => 'Proceso exitoso, espere autorización'
+						'message' => 'Proceso exitoso, puede ingresar al sistema'
 				), REST_Controller::HTTP_OK);
             }
         }

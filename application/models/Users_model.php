@@ -167,7 +167,7 @@ class Users_model extends CI_Model
     if(empty($user->last)) $user->last = '';
     if(empty($user->answer)) $user->answer = '';
     if(empty($user->phone)) $user->phone = '';
-    if(empty($user->status)) $user->status = 0; // por defecto inactivo
+    if(empty($user->status)) $user->status = 1; // por defecto activo
     if(empty($user->id_rol)) $user->id_rol = 4;
     if(empty($user->id_position)) $user->id_position = 6;
     if(empty($sponsor->ita)) $sponsor->ita = '';
