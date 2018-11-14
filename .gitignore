@@ -1,5 +1,9 @@
 .DS_Store
 
+assets/profiles/avatars/*
+assets/audios/*
+assets/banners/*
+
 application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess

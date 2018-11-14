@@ -14,6 +14,7 @@ class users extends REST_Controller
         'new_user_post' => array('level' => 0),//crea un usuario nuevo
         'new_user_app_post' => array('level' => 0), //crea un usuario de app nuevo 
         'user_ita_get' => array('level' => 0), //devuelve el usuario por ITA
+        'user_email_get' => array('level' => 0), //devuelve el usuario por Email
         'forget_post' => array('level' => 0), // para restableser el password colocando uno temp y enviandolo por email
         'forget_2_post' => array('level' => 0), // para restableser el password verificando pregunta, ita y respuesta
         'users_positions_get' => array('level' => 0), //devuelve posiciones 
@@ -27,7 +28,9 @@ class users extends REST_Controller
         'change_password_post' => array('level' => 0), //cambia el password del usuario
         'delete_user_post' => array('level' => 0), //elimina usuario
         'upload_avatar_post' => array('level' => 0), //sube foto
-        'statistics_get' => array('level' => 0) //estadisticas
+        'statistics_get' => array('level' => 0), //estadisticas
+        'companies_get' => array('level' => 0),//devuelve todos los 
+        'sub_companies_get' => array('level' => 0),//devuelve todos los 
     );
 
     public function statistics_get()
@@ -84,6 +87,27 @@ class users extends REST_Controller
         }
     }
 
+    
+    //obtener user por email
+    //users/user_email/email/email/X-API-KEY/miapikey
+    public function user_email_get()
+    {
+        if(!$this->get("email")){
+            $this->response(NULL, 400);
+        }
+        $this->load->model("users_model");
+        
+        $users = $this->users_model->user_email($this->get("email"));
+        if($users){
+            $this->response($users, REST_Controller::HTTP_OK);
+        }else{
+            $this->response(array(
+                "status" => FALSE,
+                "message" => "Usuario no encontrado..."
+            ),REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
+
     public function change_password_post() {
     //$this->response( $this->project_model->get_all ());
     //$username = $this->get('username');
@@ -94,8 +118,8 @@ class users extends REST_Controller
     //$clave = rand(123456, 999999);
    
                 
-    $temp = $this->users_model->set_password($user->ita, $user->password);
-    $user2 = $this->users_model->user_ita($user->ita);
+    $temp = $this->users_model->set_password($user->id_user, $user->password);
+    $user2 = $this->users_model->user_email($user->email);
     //$this->set_response(array('message' => 'user'.$username), REST_Controller::HTTP_NOT_FOUND);
     
     if (($temp)){
@@ -184,8 +208,8 @@ class users extends REST_Controller
     //$pass = substr(md5(time()), 0, 6);
                 
     //$temp = $this->users_model->set_password_temp($user, $pass);
-    $check = $this->users_model->check_user_question($user->email, $user->ita, $user->id_question, $user->answer);
-    $user = $this->users_model->user_ita($user->ita);
+    $check = $this->users_model->check_user_question($user->email, /*$user->ita,*/ $user->id_question, $user->answer);
+    $user = $this->users_model->user_email($user->email);
     //$this->set_response(array('message' => 'user'.$username), REST_Controller::HTTP_NOT_FOUND);
     
     if ( $check === true ){
@@ -406,7 +430,7 @@ class users extends REST_Controller
             if($new === false){
                 $this->response(array(
 						'status' => FALSE,
-						'message' => 'Ya existe el ITA o Email'
+						'message' => 'Ya existe el Email'
 				), REST_Controller::HTTP_NOT_FOUND);
             }else{
                 $this->response(array(
@@ -427,7 +451,7 @@ class users extends REST_Controller
             if($new === false){
                 $this->response(array(
 						'status' => FALSE,
-						'message' => 'Ya existe el ITA o Email'
+						'message' => 'Ya existe el Email'
 				), REST_Controller::HTTP_NOT_FOUND);
             }else{
                 $this->response(array(
@@ -530,6 +554,10 @@ class users extends REST_Controller
     public function upload_avatar_post()
     {
     $uploaddir = 'd:/img/';
+    $allowed_hosts = array('www.npeht.com', 'npeht.com', 'api.npeht.com');
+    if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_hosts)) 
+    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/npeht_api/assets/profiles/avatars/';
+    else
     $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/profiles/avatars/';
     // $this->response($this->post("file"), 200);
     
@@ -548,5 +576,29 @@ class users extends REST_Controller
      $this->response($dataDB, 200);
      
     }
+
+    public function companies_get()
+    {
+        $this->load->model("users_model");
+        $users = $this->users_model->companies();
+        if($users){
+            $this->response($users, 200);
+        }else{
+            $this->response(NULL, 400);
+        }
+    }
+
+    public function sub_companies_get()
+    {
+        $this->load->model("users_model");
+        $res = $this->users_model->sub_companies($this->get("id_company"));
+        if($res){
+            $this->response($res, 200);
+        }else{
+            $this->response(NULL, 400);
+        }
+    }
+
+
 
 }
