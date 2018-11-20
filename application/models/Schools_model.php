@@ -40,7 +40,7 @@ class Schools_model extends CI_Model
             "date_from" => $school->date_from->jsdate,
             //"date_finish" => $school->date_finish,
             "date_create" => date('Y-m-d H:i:s'),
-            "ita_user_create" => $school->users->ita,
+            "id_user_create" => $school->users->id_user,
             "description" => $school->description,
             "duration" => $school->duration,
             "status" => '1'
@@ -67,8 +67,8 @@ class Schools_model extends CI_Model
             "url" => $school->url,
             "date_from" => $school->date_from,
             "description" => $school->description,
-            "ita_user_update" => $school->ita_login,
-            "ita_user_create" => $school->users->ita,
+            "id_user_update" => $school->id_user_update,
+            "id_user_create" => $school->users->id_user,
             "duration" => $school->duration,
             //"date_finish" => $school->date_finish,
             "date_update" => date('Y-m-d H:i:s')
@@ -139,7 +139,7 @@ class Schools_model extends CI_Model
  
         if(!empty($q)){
         $this->db->like('schools.name', $q);  // Produces: WHERE `title` LIKE '%match%' ESCAPE '!'
-        $this->db->or_like('schools.ita_user_create', $q);  
+        $this->db->or_like('schools.id_user_create', $q);  
         $this->db->or_like('users.name', $q);  
         $this->db->or_like('users.last', $q);  
         }
@@ -151,17 +151,17 @@ class Schools_model extends CI_Model
         schools.url,
         schools.date_create,
         schools.date_from,
-        schools.ita_user_create,
+        schools.id_user_create,
         users.name as name_user_create,
         users.last as last_user_create, 
-        schools.ita_user_update,
+        schools.id_user_update,
         users.name as name_user_update,
         users.last as last_user_update, 
         schools.status,
         schools.duration, 
         users.photo as avatar_url
         ');
-        $this->db->join('users', 'users.ita=schools.ita_user_create');
+        $this->db->join('users', 'users.id_user=schools.id_user_create');
         //$this->db->join('positions', 'positions.id_position=users.id_position');
         //$this->db->join('questions', 'questions.id_question=users.id_question');
         //$this->db->limit(1000, 0);

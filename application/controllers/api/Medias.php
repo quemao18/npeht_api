@@ -147,7 +147,7 @@ class medias extends REST_Controller
     //users/nuevo/X-API-KEY/miapikey
     public function new_media_post()
     {   
-
+        //echo json_last_error();
         if($this->post("media")){
             $this->load->model("medias_model");
             $new = $this->medias_model->new_media(json_decode($this->post("media")));
@@ -400,7 +400,12 @@ class medias extends REST_Controller
     //echo "estimate: $duration2 seconds"."\n";
     //echo MP3File::formatTime($duration2)."\n";
     $uploaddir = 'd:/img/';
+    $allowed_hosts = array('www.npeht.com', 'npeht.com', 'api.npeht.com');
+    if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_hosts)) 
+    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/npeht_api/assets/audios/';
+    else
     $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/audios/';
+    //$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/audios/';
     // $this->response($this->post("file"), 200);
     //var_dump($_FILES);
     $file_name = underscore($_FILES['audio']['name']);
@@ -408,10 +413,6 @@ class medias extends REST_Controller
     
     //$duration1 = $mp3file->getDurationEstimate();//(faster) for CBR only
     //$duration2 = $mp3file->getDuration();//(slower) for VBR (or CBR)
-    
-       // var_dump($_FILES);
-       
-
 
     if (!file_exists($uploadfile) ) {
 

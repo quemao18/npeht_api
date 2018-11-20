@@ -11,14 +11,14 @@ class Audios_model extends CI_Model
         }
     }
 
-    public function user($user){
-        $this->db->select("*");
-        //$this->db->join('bancos', 'bancos.id_user=users.id_user');
-        $query = $this->db->get_where("users", array("users.ita" => $user->username, "users.password"=>md5($user->password)));
-        if($query->num_rows() == 1){
-            return $query->row();
-        }
-    }
+    // public function user($user){
+    //     $this->db->select("*");
+    //     //$this->db->join('bancos', 'bancos.id_user=users.id_user');
+    //     $query = $this->db->get_where("users", array("users.ita" => $user->username, "users.password"=>md5($user->password)));
+    //     if($query->num_rows() == 1){
+    //         return $query->row();
+    //     }
+    // }
 
     public function audios_modules()
     {

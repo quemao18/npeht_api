@@ -54,7 +54,7 @@ class Medias_model extends CI_Model
             //"id_user" => $user->id_user,
             "name" => $media->name,
             "url" => $media->url,
-            "ita_user_create" => $media->users->ita,
+            "id_user_create" => $media->users->id_user,
             "id_category" => $media->id_category,
             "id_sub_category" => $media->id_sub_category,
             "description" => $media->description,
@@ -81,7 +81,7 @@ class Medias_model extends CI_Model
             //"id_user" => $user->id_user,
             "name" => $media->name,
             "url" => $media->url,
-            "ita_user_create" => $media->users->ita,
+            "id_user_create" => $media->users->id_user,
             "id_module" => $media->id_module,
             "is_audio" => $media->is_audio,
             "description" => $media->description,
@@ -161,7 +161,7 @@ class Medias_model extends CI_Model
             //"id_user" => $user->id_user,
             "name" => $media->name,
             "url" => $media->url,
-            "ita_user_create" => $media->users->ita,
+            "id_user_create" => $media->users->id_user,
             "id_category" => $media->id_category,
             "id_sub_category" => $media->id_sub_category,
             "description" => $media->description,
@@ -187,7 +187,7 @@ class Medias_model extends CI_Model
             //"id_user" => $user->id_user,
             "name" => $media->name,
             "url" => $media->url,
-            "ita_user_create" => $media->users->ita,
+            "id_user_create" => $media->users->id_user,
             "id_module" => $media->id_module,
             "is_audio" => $media->is_audio,
             "description" => $media->description,
@@ -313,7 +313,7 @@ class Medias_model extends CI_Model
         $this->db->where ('medias.id_category', $id_category);
         if(!empty($q)){
         $this->db->like('medias.name', $q);  
-        $this->db->or_like('medias.ita_user_create', $q);  
+        $this->db->or_like('medias.id_user_create', $q);  
         $this->db->or_like('users.name', $q);  
         $this->db->or_like('users.last', $q);  
         }
@@ -324,10 +324,10 @@ class Medias_model extends CI_Model
         medias.description,
         medias.url,
         medias.date_create,
-        medias.ita_user_create,
+        medias.id_user_create,
         users.name as name_user_create,
         users.last as last_user_create, 
-        medias.ita_user_update,
+        medias.id_user_update,
         users.name as name_user_update,
         users.last as last_user_update, 
         medias.id_category,
@@ -341,7 +341,7 @@ class Medias_model extends CI_Model
         ');
         $this->db->join('categories', 'categories.id_category=medias.id_category');
         $this->db->join('sub_categories', 'sub_categories.id_sub_category=medias.id_sub_category');
-        $this->db->join('users', 'users.ita=medias.ita_user_create');
+        $this->db->join('users', 'users.id_user=medias.id_user_create');
         //$this->db->limit(1000, 0);
         $this->db->group_by('medias.id_media');
         $this->db->order_by('medias.date_create DESC');
@@ -359,7 +359,7 @@ class Medias_model extends CI_Model
         $this->db->where ('audios.id_module', $id_module);
         if(!empty($q)){
         $this->db->like('audios.name', $q);  // Produces: WHERE `title` LIKE '%match%' ESCAPE '!'
-        $this->db->or_like('audios.ita_user_create', $q);  
+        $this->db->or_like('audios.id_user_create', $q);  
         $this->db->or_like('users.name', $q);  
         $this->db->or_like('users.last', $q);  
         }
@@ -370,10 +370,10 @@ class Medias_model extends CI_Model
         audios.description,
         audios.url,
         audios.date_create,
-        audios.ita_user_create,
+        audios.id_user_create,
         users.name as name_user_create,
         users.last as last_user_create, 
-        audios.ita_user_update,
+        audios.id_user_update,
         users.name as name_user_update,
         users.last as last_user_update, 
         audios.id_module,
@@ -385,7 +385,7 @@ class Medias_model extends CI_Model
         users.photo as avatar_url
         ');
         $this->db->join('modules', 'modules.id_module=audios.id_module');
-        $this->db->join('users', 'users.ita=audios.ita_user_create');
+        $this->db->join('users', 'users.id_user=audios.id_user_create');
 
         //$this->db->limit(1000, 0);
         $this->db->group_by('audios.id_audio');
