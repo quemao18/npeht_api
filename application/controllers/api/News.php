@@ -186,10 +186,14 @@ class news extends REST_Controller
 
     public function upload_post()
     {
-    $uploaddir = 'd:/img/';
-    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/banners/';
     // $this->response($this->post("file"), 200);
-    
+    $uploaddir = 'd:/img/';
+    $allowed_hosts = array('www.npeht.com', 'npeht.com', 'api.npeht.com');
+    if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_hosts)) 
+    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/npeht_api/assets/banners/';
+    else
+    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/banners/';
+
     $file_name = underscore($_FILES['image']['name']);
     $uploadfile = $uploaddir.$file_name;
 

@@ -51,7 +51,7 @@ class users extends REST_Controller
     //users/user_id/id/id_user/X-API-KEY/miapikey
     public function user_id_get()
     {
-        if(!$this->get("id")){
+        if(!$this->get("id_user")){
             $this->response(NULL, 400);
         }
         $this->load->model("users_model");
