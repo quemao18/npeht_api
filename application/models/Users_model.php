@@ -442,10 +442,10 @@ class Users_model extends CI_Model
 	}	
 	
 
-    public function check_user_question($email, /*$ita,*/ $id_question, $answer)
+    public function check_user_question($email, $id_question, $answer)
 	{
 			$id = $this->db->query(
-					"select email, ita, id_question, answer from users where email = '$email' and id_question ='$id_question' and answer ='$answer'"
+					"select email, id_user, id_question, answer from users where email = '$email' and id_question ='$id_question' and answer ='$answer'"
 			);
 
 		if($id->num_rows() == 1)
@@ -655,13 +655,13 @@ class Users_model extends CI_Model
     	);
     }
 
-    public function set_password($id_user, $pass)
+    public function set_password($email, $pass)
     {
         //$ita = $user->ita;
     	//print_r($ita);
     	$id = $this->db->query(
     			"update users set password =  md5('$pass') " .
-    			"where users.id_user = '$id_user'"
+    			"where users.email = '$email'"
     	);
     	
     	$afftectedRows = $this->db->affected_rows();

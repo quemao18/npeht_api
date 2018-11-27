@@ -118,7 +118,7 @@ class users extends REST_Controller
     //$clave = rand(123456, 999999);
    
                 
-    $temp = $this->users_model->set_password($user->id_user, $user->password);
+    $temp = $this->users_model->set_password($user->email, $user->password);
     $user2 = $this->users_model->user_email($user->email);
     //$this->set_response(array('message' => 'user'.$username), REST_Controller::HTTP_NOT_FOUND);
     
@@ -208,7 +208,7 @@ class users extends REST_Controller
     //$pass = substr(md5(time()), 0, 6);
                 
     //$temp = $this->users_model->set_password_temp($user, $pass);
-    $check = $this->users_model->check_user_question($user->email, /*$user->ita,*/ $user->id_question, $user->answer);
+    $check = $this->users_model->check_user_question($user->email, $user->id_question, $user->answer);
     $user = $this->users_model->user_email($user->email);
     //$this->set_response(array('message' => 'user'.$username), REST_Controller::HTTP_NOT_FOUND);
     
