@@ -429,7 +429,7 @@ class medias extends REST_Controller
             $dataDB['duration'] = $duration1;
         } else {
             $dataDB['status'] = FALSE;   
-            $dataDB['message'] =  'Error subiendo audio';       
+            $dataDB['message'] =  'Error subiendo audio';
         }
 
     }else{
