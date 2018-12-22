@@ -267,10 +267,10 @@ class Users_model extends CI_Model
         //$query = $this->db->update('users', $data, array('id_user' => $user->id_user));
         //$query = $this->db->where('email', $user->email)->get('users');
 
-        if(!$this->check_email($user->email, $user->ita) && !$this->check_email($user->email, $user->ita)){
+        if(!$this->check_email($user->email, $user->id_user) && !$this->check_email($user->email, $user->id_user)){
             return false;
         }else{
-            if($this->db->update('users', $data /*, array('ita' => $user->ita)*/))
+            if($this->db->update('users', $data ,array('id_user' => $user->id_user)))
             return true;
             else
             return false;
