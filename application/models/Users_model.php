@@ -213,7 +213,7 @@ class Users_model extends CI_Model
     if(empty($user->answer)) $user->answer = '';
     if(empty($user->phone)) $user->phone = '';
     if(empty($user->avatar_url)) $user->avatar_url = '';
-    //if(empty($user->id_rol)) $user->id_rol = 4;
+    if(empty($user->id_rol)) $user->id_rol = 4;
     //if(empty($user->id_position)) $user->id_position = 6;
     //if(empty($sponsor->ita)) $sponsor->ita = '';
     //if(empty($platinum->ita)) $platinum->ita = '';
@@ -228,7 +228,7 @@ class Users_model extends CI_Model
             //"ita" => $user->ita,
             //"ita_sponsor" => $sponsor->ita,
             //"ita_platinum" => $platinum->ita,
-            //"id_rol" => $user->id_rol,
+            "id_rol" => $user->id_rol,
             //"id_position" => $user->id_position,
             //"status" => $user->status,
             "email" => $user->email,
@@ -250,7 +250,7 @@ class Users_model extends CI_Model
             //"ita" => $user->ita,
             //"ita_sponsor" => $sponsor->ita,
             //"ita_platinum" => $platinum->ita,
-            //"id_rol" => $user->id_rol,
+            "id_rol" => $user->id_rol,
             //"id_position" => $user->id_position,
             //"status" => $user->status,
             "email" => $user->email,
