@@ -34,8 +34,6 @@ class Users_model extends CI_Model
         users.email, 
         users.id_rol, 
         rols.rol,
-        users.id_question,
-        questions.question, 
         users.answer, 
         users.status,
         users.photo,
