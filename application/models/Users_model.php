@@ -34,6 +34,8 @@ class Users_model extends CI_Model
         users.email, 
         users.id_rol, 
         rols.rol,
+        users.id_question,
+        questions.question, 
         users.answer, 
         users.status,
         users.photo,
@@ -44,7 +46,7 @@ class Users_model extends CI_Model
         $this->db->join('companies', 'companies.id_company=users.id_company');
         $this->db->join('sub_companies', 'sub_companies.id_sub_company=users.id_sub_company');
         //$this->db->join('positions', 'positions.id_position=users.id_position');
-        //$this->db->join('questions', 'questions.id_question=users.id_question');
+        $this->db->join('questions', 'questions.id_question=users.id_question');
         //$this->db->join('users as sponsor', 'sponsor.ita = users.ita_sponsor', 'left');
         //$this->db->join('users as platinum', 'platinum.ita = users.ita_platinum', 'left');
         //$this->db->join('bancos', 'bancos.id_user=users.id_user');
