@@ -477,7 +477,7 @@ class Users_model extends CI_Model
 
     public function users($q, $limit, $start, $id_rol)
     {
-        
+
         if(!empty($start) || !empty($limit) || !is_null($start) || !is_null($limit))
         $this->db->limit($limit, $start);
         if($id_rol>0)
@@ -514,7 +514,7 @@ class Users_model extends CI_Model
         $this->db->join('companies', 'companies.id_company=users.id_company');
         $this->db->join('sub_companies', 'sub_companies.id_sub_company=users.id_sub_company');
         //$this->db->join('positions', 'positions.id_position=users.id_position');
-        $this->db->join('questions', 'questions.id_question=users.id_question');
+        $this->db->join('questions', 'questions.id_question=users.id_question' ,'left');
         //$this->db->join('users as sponsor', 'sponsor.ita = users.ita_sponsor', 'left');
         //$this->db->join('users as platinum', 'platinum.ita = users.ita_platinum', 'left');
         //$this->db->limit(1000, 0);
@@ -547,7 +547,6 @@ class Users_model extends CI_Model
         users.id_rol, 
         rols.rol,
         users.id_question,
-        
         users.answer, 
         users.status,
         users.photo,
@@ -608,7 +607,7 @@ class Users_model extends CI_Model
         $this->db->join('companies', 'companies.id_company=users.id_company');
         $this->db->join('sub_companies', 'sub_companies.id_company=users.id_company');
         //$this->db->join('positions', 'positions.id_position=users.id_position');
-        $this->db->join('questions', 'questions.id_question=users.id_question');
+        $this->db->join('questions', 'questions.id_question=users.id_question', 'left');
         //$this->db->join('users as sponsor', 'sponsor.ita = users.ita_sponsor', 'left');
         //$this->db->join('users as platinum', 'platinum.ita = users.ita_platinum', 'left');
         //$query = $this->db->get("users");

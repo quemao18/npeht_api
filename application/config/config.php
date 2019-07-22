@@ -22,7 +22,7 @@ $config['APP_EMAIL_SMTP_USER'] = 'info@rodasalias.com';
 $config['APP_EMAIL_SMTP_PASS'] = '';
 //end smtp config
 
-$config['LIMIT'] = 50;
+$config['LIMIT'] = 1000;
 
 $config['APP_SLOGAN'] = '';
 $config['APP_WEB'] = 'www.npeht.com';
