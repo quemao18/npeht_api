@@ -341,7 +341,7 @@ class Medias_model extends CI_Model
         ');
         $this->db->join('categories', 'categories.id_category=medias.id_category');
         $this->db->join('sub_categories', 'sub_categories.id_sub_category=medias.id_sub_category');
-        $this->db->join('users', 'users.id_user=medias.id_user_create');
+        $this->db->join('users', 'users.id_user=medias.id_user_create', 'left');
         //$this->db->limit(1000, 0);
         $this->db->group_by('medias.id_media');
         $this->db->order_by('medias.date_create DESC');
@@ -385,7 +385,7 @@ class Medias_model extends CI_Model
         users.photo as avatar_url
         ');
         $this->db->join('modules', 'modules.id_module=audios.id_module');
-        $this->db->join('users', 'users.id_user=audios.id_user_create');
+        $this->db->join('users', 'users.id_user=audios.id_user_create', 'left');
 
         //$this->db->limit(1000, 0);
         $this->db->group_by('audios.id_audio');
